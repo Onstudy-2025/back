@@ -20,6 +20,18 @@ from core.auth import TELEGRAM_BOT_TOKEN, current_user
 router = APIRouter()
 
 
+@router.get("/courses")
+async def getListCourses(
+    user_data: dict = Depends(current_user), 
+    db: AsyncSession = Depends(get_db)
+):
+    
+    result = await db.execute(select(Course))
+    courses: List[Course] = result.scalars().all()
+    return courses
+
+
+
 @router.get("/courses/{id}")
 async def getListCourses(
     id : int ,
