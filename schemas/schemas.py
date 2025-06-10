@@ -34,6 +34,7 @@ class LessonShort(BaseModel):
 
 # Инфо по каждому видео-уроку 
 class LessonVideoInfo(BaseModel):
+    id : int 
     videoLink: str = Field(..., alias="video_link")
     description: str | None = None
     videoCover: str | None = Field(None, alias="video_cover")
