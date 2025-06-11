@@ -92,7 +92,7 @@ async def get_lessons_of_course(
 async def get_lessons_of_module(
     course_id: int,
     module_id: int,
-    # user_data: dict = Depends(current_user),  
+    user_data: dict = Depends(current_user),  
     db: AsyncSession = Depends(get_db),
 ):
   

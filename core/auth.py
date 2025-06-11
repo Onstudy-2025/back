@@ -94,12 +94,12 @@ async def current_user(
         )
 
     now = datetime.utcnow()
-    if now - user.session_created_at > timedelta(hours=2):
+    if now - user.session_created_at > timedelta(minutes=3):
         user.session_id = None
         user.session_created_at = None
         await db.commit()
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
+            status_code=status.HTTP_403_FORBIDDEN,
             detail="Сессия истекла, авторизуйтесь заново"
         )
 

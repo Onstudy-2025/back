@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "title": "Где тут Present Perfect Continuous?",
+    "variants": [
+      {
+        "id": 1,
+        "label": "My name is Beka"
+      },
+      {
+        "id": 2,
+        "label": "I've lived in Europe since 2024"
+      },
+      {
+        "id": 3,
+        "label": "My name is Aliya"
+      },
+      {
+        "id": 4,
+        "label": "I've lived in Europe"
+      }
+    ]
+  }
+]

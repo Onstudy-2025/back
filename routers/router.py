@@ -6,4 +6,4 @@ api_router = APIRouter()
 
 api_router.include_router(user_router, tags=["authentication"])
 api_router.include_router(lesson_router , tags=["Courses"])
-# api_router.include_router(tests_router , tags=["Tests"])
+api_router.include_router(tests_router , tags=["Tests"])
