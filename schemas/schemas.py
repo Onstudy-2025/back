@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import Optional,List
+from typing import Optional,List, Dict
 
 
 # Init DaTA 
@@ -54,3 +54,25 @@ class ModuleWithLessons(BaseModel):
         orm_mode = True
 
 
+class AnswerItem(BaseModel):
+    questionId: int
+    answerId: int
+
+
+class TestData(BaseModel):
+    testId: int
+    answers: List[AnswerItem]
+
+
+class CheckAnswers(BaseModel):
+    data: TestData
+
+    class Config:
+        orm_mode = True
+
+
+class TestAnswerReturn(BaseModel):
+    grade: str
+    correctAnswersCount : int
+    correctAnswersPercent : float
+    numberOfQuestions : int

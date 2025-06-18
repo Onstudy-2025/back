@@ -94,7 +94,7 @@ async def current_user(
         )
 
     now = datetime.utcnow()
-    if now - user.session_created_at > timedelta(minutes=3):
+    if now - user.session_created_at > timedelta(minutes=30):
         user.session_id = None
         user.session_created_at = None
         await db.commit()

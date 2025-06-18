@@ -71,7 +71,7 @@ async def get_lessons_of_course(
             {
                 "id": lesson.id,
                 "title": lesson.title,
-                "duration": int(lesson.duration) if lesson.duration.isdigit() else lesson.duration
+                "duration": lesson.duration
             }
             for lesson in sorted_lessons
         ]

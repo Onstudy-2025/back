@@ -38,6 +38,8 @@ class Course(Base):
         back_populates="course",
         cascade="all, delete-orphan"
     )
+    class Config:
+        orm_mode=True
 
 
 class CourseModule(Base):
