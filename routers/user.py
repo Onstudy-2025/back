@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Query, HTTPException, status, Request
+from fastapi import APIRouter, Depends, Query, HTTPException, status, Request, Header
 from fastapi.exceptions import HTTPException
 import os 
 from typing import Any, List
@@ -171,8 +171,7 @@ async def auth_init(
 
 
 @router.get("/me")
-async def get_me(request: Request, db: AsyncSession = Depends(get_db)):
-    session_id = request.cookies.get("session_id")
+async def get_me(session_id: str = Header(None, alias="X-Session-Id"), db: AsyncSession = Depends(get_db)):
     if not session_id:
         raise HTTPException(status_code=401, detail="Not authenticated")
 
