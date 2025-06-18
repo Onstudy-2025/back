@@ -1,4 +1,4 @@
-from fastapi import Depends, HTTPException, status, Query, HTTPException, Cookie, status
+from fastapi import Depends, HTTPException, status, Query, HTTPException, Cookie, status, Header
 from datetime import datetime, timedelta
 import hashlib
 import hmac
@@ -64,7 +64,7 @@ def check_webapp_signature(token: str, init_data: str) -> bool:
 
 
 async def current_user(
-    session_id: str = Cookie(None),
+    session_id: str = Header(None, alias="X-Session-Id"),
     db: AsyncSession = Depends(get_db)
 ) -> Dict[str, Any]:
     if not session_id:
@@ -73,7 +73,7 @@ async def current_user(
             detail="Не передан session_id (неавторизован)"
         )
 
-    print(session_id)
+    
     result = await db.execute(
         select(User).where(User.session_id == session_id)
     )

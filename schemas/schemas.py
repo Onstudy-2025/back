@@ -19,6 +19,7 @@ class AuthInitResponse(BaseModel):
     status: str        
     message: str       
     is_member: bool    
+    session_id : str
 
 # Описание самого урока 
 class LessonShort(BaseModel):
