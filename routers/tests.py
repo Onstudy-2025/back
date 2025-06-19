@@ -50,7 +50,7 @@ async def getFullTestWithId(
     
    
 @router.post("/tests/checktest")
-async def getFullTestWithId(
+async def CheckFullTestById(
     data : CheckAnswers,
     user_data: dict = Depends(current_user),  
     db: AsyncSession = Depends(get_db)
