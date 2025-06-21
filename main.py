@@ -16,7 +16,7 @@ app.include_router(api_router)
 # Set up CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://frontt-blond.vercel.app","http://localhost:3000"],  # Разрешаем только этот домен
+    allow_origins=["https://frontt-blond.vercel.app","http://localhost:3000"],  
     allow_credentials=True,
     allow_methods=["*"],  
     allow_headers=["*"],  

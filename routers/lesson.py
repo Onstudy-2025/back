@@ -33,7 +33,7 @@ async def getListCourses(
 
 
 @router.get("/courses/{id}")
-async def getListCourses(
+async def getExactCourseById(
     id : int ,
     user_data: dict = Depends(current_user), 
     db: AsyncSession = Depends(get_db)
