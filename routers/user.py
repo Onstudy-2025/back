@@ -29,7 +29,7 @@ router = APIRouter()
 
 @router.post(
     "/auth/init/",
-    response_model=AuthInitResponse,
+    response_model=AuthInitResponse,        
     summary="Авторизация + проверка наличия в канале"
 )
 async def auth_init(
@@ -124,17 +124,7 @@ async def auth_init(
     user.session_created_at = datetime.utcnow()
     await db.commit()
 
-    # 7. Устанавливаем cookie сессии
-    response.set_cookie(
-    key="session_id",
-    value=new_session_id,
-    httponly=True,
-    secure=True,               # только по HTTPS
-    samesite="none",           # чтобы кросс-домен куку слало
-    domain="onstudyithack2025.ru",
-    path="/",
-    max_age=2*3600,
-)
+    
 
 
     
@@ -157,7 +147,8 @@ async def auth_init(
     return AuthInitResponse(
         status="ok",
         message="Авторизация успешна",
-        is_member=is_member
+        is_member=is_member,
+        session_id=new_session_id
     )
 
 

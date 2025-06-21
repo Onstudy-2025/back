@@ -80,3 +80,18 @@ class Lesson(Base):
     video_link = Column(String, nullable=False)
     description = Column(String, nullable=True)
     video_cover = Column(String, nullable=True)
+
+
+
+
+class Appointment(Base):
+    __tablename__ = 'appointments'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    date = Column(String, nullable=False)
+    time = Column(String, nullable=False)
+    title = Column(String, nullable=False)
+    count_of_slots = Column(Integer, nullable=False)
+
+    def __repr__(self):
+        return f"<Appointment(id={self.id}, date={self.date}, time={self.time}, title='{self.title}', count_of_slots={self.count_of_slots})>"
